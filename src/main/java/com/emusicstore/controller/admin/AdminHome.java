@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminHome {
 
-    @Autowired
+    @Autowired  //this is also test from web
     private ProductService productService;
     @Autowired
     private CustomerService customerService;
