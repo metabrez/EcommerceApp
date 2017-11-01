@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:sercurity="http://www.springframework.org/schema/security"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:webflow-config="http://www.springframework.org/schema/webflow-config"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security
+       http://www.springframework.org/schema/security/spring-security.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/webflow-config http://www.springframework.org/schema/webflow-config/spring-webflow-config.xsd">
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+
+        <property name="driverClassName" value="org.h2.Driver"></property>
+        <property name="url" value="jdbc:h2:tcp://localhost/~/test"></property>
+        <property name="username" value="sa"/>
+        <property name="password" value=""/>
+    </bean>
+
+
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="hibernateProperties">
+
+            <props>
+
+                <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+            </props>
+
+        </property>
+
+        <property name="packagesToScan">
+
+            <list>
+
+                <value>com.emusicstore</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+
+
+    </bean>
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="1024000"/>
+
+    </bean>
+    <security:http auto-config="true" use-expressions="true">
+        <security:intercept-url pattern="/customer/**" access="hasAuthority('ROLE_USER')"/>
+        <security:intercept-url pattern="/admin/**" access="hasAuthority('ROLE_ADMIN')"/>
+
+        <security:form-login
+                login-page="/login"
+                default-target-url="/product/productList/"
+                authentication-failure-url="/login?error"
+                username-parameter="username"
+                password-parameter="password"/>
+        <sercurity:logout logout-success-url="/login?logout"/>
+        <security:csrf disabled="true"></security:csrf>
+
+    </security:http>
+
+
+
+    <security:authentication-manager>
+        <security:authentication-provider>
+            <security:jdbc-user-service data-source-ref="dataSource"
+                                        authorities-by-username-query="SELECT username, authority
+                                        FROM Authorities WHERE username=?"
+                                        users-by-username-query="SELECT username, password, enabled
+                                        FROM users WHERE username=?"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <context:component-scan base-package="com.emusicstore"/>
+    <mvc:annotation-driven/>
+
+    <tx:annotation-driven/>
+
+    <webflow-config:flow-executor id="flowExecutor" flow-registry="flowRegistry"/>
+    <webflow-config:flow-registry id="flowRegistry" base-path="/WEB-INF/flows">
+    <webflow-config:flow-location path="/checkout/checkout-flow.xml" id="checkout"/>
+    </webflow-config:flow-registry>
+
+
+    <bean id="flowHandlerMapping" class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
+        <property name="flowRegistry" ref="flowRegistry"/>
+    </bean>
+
+    <bean id="flowHandlerAdapter" class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
+        <property name="flowExecutor" ref="flowExecutor"></property>
+    </bean>
+</beans>
