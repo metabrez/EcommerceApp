@@ -30,6 +30,7 @@ public class AdminHome {
 /*This is master commit*/
 /*What a Mother Father*/
 
+
     @RequestMapping("/productInventory")
     public String productInventory(Model model) {
 
