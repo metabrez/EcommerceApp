@@ -31,7 +31,7 @@ public class AdminHome {
 /*What a Mother Father*/
 /*slkdjfa;lskdf;alkdsf;lasdlfka;d*/
 /*d;flaskjdf;alk*/
-
+/*What a lsdkfjalksd alam */
 
     @RequestMapping("/productInventory")
     public String productInventory(Model model) {
