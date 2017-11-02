@@ -32,7 +32,11 @@ public class AdminHome {
 /*slkdjfa;lskdf;alkdsf;lasdlfka;d*/
 
 /*d;flaskjdf;alk*/
+
 /*dsljf;alksdf;l*/
+
+
+/*What a lsdkfjalksd alam */
 
 
     @RequestMapping("/productInventory")
