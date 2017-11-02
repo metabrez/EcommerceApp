@@ -4,10 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/com/emusicstore/controller/admin/OrderController.java" line="31" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4df3d7d9-77e6-4f77-a320-875941c275e6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/emusicstore/controller/admin/AdminProduct.java" afterPath="$PROJECT_DIR$/src/main/java/com/emusicstore/controller/admin/AdminProduct.java" />
-    </list>
+    <list default="true" id="4df3d7d9-77e6-4f77-a320-875941c275e6" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -996,7 +993,7 @@
       <workItem from="1493378703661" duration="10059000" />
       <workItem from="1509516334472" duration="712000" />
       <workItem from="1509596725298" duration="605000" />
-      <workItem from="1509641979904" duration="2218000" />
+      <workItem from="1509641979904" duration="2408000" />
     </task>
     <task id="LOCAL-00001" summary="This is a test.">
       <created>1490187583414</created>
@@ -1044,7 +1041,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="377353000" />
+    <option name="totallyTimeSpent" value="377543000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
