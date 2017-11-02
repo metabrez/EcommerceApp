@@ -39,6 +39,12 @@ public class AdminProduct {
     /*this is brach comment*/
     /*this is brach comment*/
     /*this is brach comment*/
+    /*This is proudct comment*/
+    /*This is proudct comment*/
+    /*This is proudct comment*/
+    /*this is brach comment*/
+    /*this is brach comment*/
+    /*this is b2 comment*/
 
     @RequestMapping("/product/addProduct")
 
