@@ -33,6 +33,9 @@ public class AdminProduct {
 
     private Path path;
 
+    /*This is proudct comment*/
+    /*This is proudct comment*/
+    /*This is proudct comment*/
 
     @RequestMapping("/product/addProduct")
 
