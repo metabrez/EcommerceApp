@@ -27,7 +27,7 @@ public class AdminHome {
     public String adminpage() {
         return "admin";
     }
-
+/*This is master commit*/
 
     @RequestMapping("/productInventory")
     public String productInventory(Model model) {
