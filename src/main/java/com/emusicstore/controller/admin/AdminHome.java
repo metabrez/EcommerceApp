@@ -28,6 +28,7 @@ public class AdminHome {
         return "admin";
     }
 /*This is master commit*/
+/*this is second remote*/
 
     @RequestMapping("/productInventory")
     public String productInventory(Model model) {
